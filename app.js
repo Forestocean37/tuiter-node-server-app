@@ -1,10 +1,18 @@
 import express from 'express';
 import cors from 'cors'
+import mongoose from "mongoose";
 import HelloController from "./controllers/hello-controller.js"
 import UserController from "./controllers/users/users-controller.js"
 import TuitsController from "./controllers/tuits/tuits-controller.js";
 
 
+
+// mongoose.connect('mongodb://localhost:27017/tuiter');
+// mongodb+srv://forestocean:<password>@cluster0.o6iatpg.mongodb.net/?retryWrites=true&w=majority
+
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://localhost:27017/tuiter';
+// console.log(CONNECTION_STRING);
+mongoose.connect(CONNECTION_STRING);
 
 const app = express();
 app.use(cors())
